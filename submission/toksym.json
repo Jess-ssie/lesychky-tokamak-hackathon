@@ -5,6 +5,6 @@
   "weights.json"
  ],
  "requires": [],
- "name": "physics-hazard v1",
- "notes": "Формула ризику симулятора з вимірюваних каналів; p = 1-exp(-lambda*T_до_спаду) + детектор locked mode"
+ "name": "physics-hazard v2",
+ "notes": "Формула ризику симулятора з вимірюваних каналів + прогноз за уставками на 0.5 с + неонове вікно + locked mode"
 }
