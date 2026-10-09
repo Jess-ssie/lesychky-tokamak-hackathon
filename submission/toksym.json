@@ -1,0 +1,10 @@
+{
+ "schema": 1,
+ "entry": "model.py",
+ "files": [
+  "weights.json"
+ ],
+ "requires": [],
+ "name": "physics-hazard v1",
+ "notes": "Формула ризику симулятора з вимірюваних каналів; p = 1-exp(-lambda*T_до_спаду) + детектор locked mode"
+}
