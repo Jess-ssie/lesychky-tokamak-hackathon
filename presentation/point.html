@@ -1,0 +1,13 @@
+<section id="point" data-transition="fade" style="background:#fcfcfb;color:#14181f;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Робоча точка: 0,3 с і 5 % хибних тривог</h2>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/270228f1e3513264e19e8df1485590d3" alt="Частка спійманих зривів залежно від бюджету хибних тривог" style="width:900px;height:600px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:8px;padding:0 0 0 24px;border-left:4px solid #2a78d6"><h3 style="font-size:30px;font-weight:600;line-height:1.2">0,3 с — запас на реакцію</h3><p style="font-size:26px;line-height:1.4;color:#4a5361">Це у 3–6 разів довше за передвісник locked mode (50–100 мс).</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;padding:0 0 0 24px;border-left:4px solid #2a78d6"><h3 style="font-size:30px;font-weight:600;line-height:1.2">5 % — мало зупинених розрядів</h3><p style="font-size:26px;line-height:1.4;color:#4a5361">Хибна тривога гасить здоровий розряд, тому бюджет тримаємо малим.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;padding:0 0 0 24px;border-left:4px solid #eb6834"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Ціна бюджету відома</h3><p style="font-size:26px;line-height:1.4;color:#4a5361">На 1300 розрядах: 5 % → 61 %, 10 % → 80 %, 15 % → 84 %, 20 % → 91 %.</p></div>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#6a7380">Test run на 200 розрядах: 5 % → 70 %, 9 % → 75 %, 15 % → 92 %; розкид малої вибірки</p><p style="font-size:24px;color:#6a7380">5</p></div>
+<aside>Чому саме ця точка. Тридцять мілісекунд можна зловити самим locked mode, але за цей час нічого не встигнеш зробити. 0,3 секунди — це у три-шість разів довше за передвісник, тобто тут модель мусить справді прогнозувати. П'ять відсотків — бо кожна хибна тривога це зупинений здоровий розряд. Ми знаємо ціну: якщо дозволити п'ятнадцять відсотків, ловимо 84–92 відсотки. Чесно: на двохстах розрядах цифри вищі, ніж на тисячі трьохстах, це розкид малої вибірки.</aside>
+</section>

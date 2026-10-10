@@ -1,0 +1,16 @@
+<section id="ml" data-transition="fade" style="background:#fcfcfb;color:#14181f;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Нейромережі не обігнали формулу</h2>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/60fd0a1869cc08dd3a7327512862e865" alt="Порівняння моделей за середнім TPR" style="width:860px;height:580px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;background:#eaf2fc;padding:22px 28px;border:1px solid #b7d3f6;border-radius:14px"><p style="font-size:28px;font-weight:600;line-height:1.3">Фізична формула</p><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600">0,693</p></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;background:#ffffff;padding:22px 28px;border:1px solid #dcdfe3;border-radius:14px"><p style="font-size:28px;line-height:1.3">Формула + GRU-поправка</p><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600">0,698</p></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;background:#ffffff;padding:22px 28px;border:1px solid #dcdfe3;border-radius:14px"><p style="font-size:28px;line-height:1.3">GRU на ознаках формули</p><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600">0,672</p></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;background:#ffffff;padding:22px 28px;border:1px solid #dcdfe3;border-radius:14px"><p style="font-size:28px;line-height:1.3">GRU на сирих каналах</p><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600">0,657</p></div>
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;background:#ffffff;padding:22px 28px;border:1px solid #dcdfe3;border-radius:14px"><p style="font-size:28px;line-height:1.3">Бустинг: 0,86 на навчанні</p><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:30px;font-weight:600;color:#eb6834">0,49</p></div>
+<p style="font-size:26px;line-height:1.4;color:#4a5361">Поправка +0,005 лежить у межах шуму, тому здаємо формулу: її можна пояснити.</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#6a7380">Середній TPR на 1300 нових розрядах; навчання на 5500 розрядах команди</p><p style="font-size:24px;color:#6a7380">8</p></div>
+<aside>Ми чесно спробували машинне навчання на п'яти з половиною тисячах розрядів. GRU на сирих каналах без формули програє: різниця мінус 0,036, інтервал не містить нуля. Бустинг запам'ятав навчальну вибірку — 0,86 — і розвалився на нових розрядах до 0,49. GRU-поправка поверх формули дає плюс 0,005, тобто нічого. Ще перевірили канал D-альфа як додаткову ознаку — не допомагає. Висновок: уся передбачувана частина вже у формулі, і ми здаємо її, бо кожне число в ній має фізичний зміст.</aside>
+</section>

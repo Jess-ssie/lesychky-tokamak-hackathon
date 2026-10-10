@@ -1,0 +1,28 @@
+<section id="model" data-transition="fade" style="background:#fcfcfb;color:#14181f;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Модель: чотири межі, одна формула ризику</h2>
+<div style="display:flex;gap:28px;align-items:center">
+<div style="width:620px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#ffffff;padding:26px;border:1px solid #dcdfe3;border-radius:14px"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Грінвальд</h3><p style="font-size:24px;line-height:1.35;color:#4a5361">густина / струм</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#ffffff;padding:26px;border:1px solid #dcdfe3;border-radius:14px"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Кінк-межа</h3><p style="font-size:24px;line-height:1.35;color:#4a5361">низький q95</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#ffffff;padding:26px;border:1px solid #dcdfe3;border-radius:14px"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Радіаційна</h3><p style="font-size:24px;line-height:1.35;color:#4a5361">P_rad / P_in</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#ffffff;padding:26px;border:1px solid #dcdfe3;border-radius:14px"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Тройон</h3><p style="font-size:24px;line-height:1.35;color:#4a5361">бета β_N</p></div>
+</div>
+<x-shape kind="arrow-right" style="width:72px;height:40px;background:#2a78d6"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#eaf2fc;padding:36px;border:1px solid #b7d3f6;border-radius:16px">
+<h3 style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:40px;font-weight:600;line-height:1.2">λ(t)</h3>
+<p style="font-size:26px;line-height:1.4;color:#33404f">Інтенсивність зриву: формула симулятора з методички, входи з приладів.</p>
+</div>
+<x-shape kind="arrow-right" style="width:72px;height:40px;background:#2a78d6"></x-shape>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#101820;padding:36px;border-radius:16px">
+<h3 style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:40px;font-weight:600;line-height:1.2;color:#f3f2ee">p = 1 − e⁻ᴸ</h3>
+<p style="font-size:26px;line-height:1.4;color:#c9d2dc">L — очікуваний ризик до спаду струму.</p>
+</div>
+</div>
+<div style="display:flex;gap:28px">
+<div style="flex:1;display:flex;flex-direction:column;gap:10px;padding:0 0 0 24px;border-left:4px solid #2a78d6"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Прогноз на 0,5 с</h3><p style="font-size:26px;line-height:1.4;color:#4a5361">Густина наздоганяє уставку із затримкою 0,3 с.</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px;padding:0 0 0 24px;border-left:4px solid #2a78d6"><h3 style="font-size:30px;font-weight:600;line-height:1.2">Неонове вікно</h3><p style="font-size:26px;line-height:1.4;color:#4a5361">Після сильного напуску ризик зростає, щойно вимкнеться нагрів.</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:10px;padding:0 0 0 24px;border-left:4px solid #2a78d6"><h3 style="font-size:30px;font-weight:600;line-height:1.2">4 навчені константи</h3><p style="font-size:26px;line-height:1.4;color:#4a5361">Максимальна правдоподібність на 4000 розрядів.</p></div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#6a7380">Чистий Python, 22 канали зі 100, крок 0,01 мс при ліміті 5 мс</p><p style="font-size:24px;color:#6a7380">3</p></div>
+<aside>Модель фізична. З приладів відновлюємо чотири величини: частку межі Грінвальда, q95, частку випромінювання і бету. Підставляємо у формулу інтенсивності зриву з методички. Потім множимо на час, що лишився до спаду струму, і отримуємо очікуваний ризик L. Три доповнення: прогноз на пів секунди, бо густина наздоганяє уставку із затримкою; неонове вікно; і чотири калібрувальні константи, які ми навчили методом максимальної правдоподібності на чотирьох тисячах розрядів. Усе це 250 рядків чистого Python.</aside>
+</section>

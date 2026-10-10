@@ -1,0 +1,23 @@
+<section id="task" data-transition="fade" style="background:#fcfcfb;color:#14181f;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:48px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Момент зриву вирішує жереб, тому ми оцінюємо ризик</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;padding:44px;border:1px solid #dcdfe3;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#2a78d6;letter-spacing:2px;text-transform:uppercase">Що дано</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2">100 каналів кожні 5 мс</h3>
+<p style="font-size:30px;line-height:1.4;color:#4a5361">Симулятор JET: зашумлені прилади, відмови, жодного доступу до майбутнього.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;padding:44px;border:1px solid #dcdfe3;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#2a78d6;letter-spacing:2px;text-transform:uppercase">Що всередині</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2">Зрив починається з жереба</h3>
+<p style="font-size:30px;line-height:1.4;color:#4a5361">На кожному кроці шанс дорівнює λ·dt. Чим ближче плазма до операційної межі, тим більша λ.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;padding:44px;border:1px solid #dcdfe3;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:24px;color:#2a78d6;letter-spacing:2px;text-transform:uppercase">Що треба</p>
+<h3 style="font-size:40px;font-weight:600;line-height:1.2">Тривога завчасно</h3>
+<p style="font-size:30px;line-height:1.4;color:#4a5361">Імовірність p на кожному кроці; оцінюють частку спійманих зривів за заданого бюджету хибних тривог.</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;color:#4a5361">Звідси план: відновити λ з приладів і перетворити її на ймовірність.</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#6a7380">Lesychky · Код плазми</p><p style="font-size:24px;color:#6a7380">2</p></div>
+<aside>У симуляторі зрив не настає детерміновано. На кожному кроці кидається жереб з імовірністю лямбда на де-те. Лямбда залежить від того, наскільки близько плазма підійшла до чотирьох операційних меж. Тому точний момент не передбачить ніхто, а от саму лямбду можна відновити з вимірювань. Це і є наш план.</aside>
+</section>

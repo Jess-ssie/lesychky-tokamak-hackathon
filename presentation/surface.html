@@ -1,0 +1,13 @@
+<section id="surface" data-transition="fade" style="background:#fcfcfb;color:#14181f;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Уся поверхня TPR: 0,69 проти 0,44 у бейзлайна</h2>
+<div style="display:flex;gap:48px;align-items:center">
+<img src="/_blob/ff7ce64b29b8b6d952940e53e61106ef" alt="Поверхня TPR за Lead time і бюджетом хибних тривог" style="width:960px;height:600px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px;background:#ffffff;padding:32px;border:1px solid #dcdfe3;border-radius:16px"><p style="font-size:64px;font-weight:700;line-height:1.05;color:#2a78d6">0,693</p><p style="font-size:26px;line-height:1.35;color:#4a5361">середній TPR по сітці 8 × 6 на 1300 нових розрядах</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;background:#ffffff;padding:32px;border:1px solid #dcdfe3;border-radius:16px"><p style="font-size:64px;font-weight:700;line-height:1.05">+0,35</p><p style="font-size:26px;line-height:1.35;color:#4a5361">до бейзлайна на наборі команди; інтервал 95 %: від 0,25 до 0,47</p></div>
+<p style="font-size:26px;line-height:1.4;color:#4a5361">Слабке місце — Lead time 2 с: там 6–42 %.</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#6a7380">Сітка: Lead time 0,03–2 с × бюджет 2–30 %; на seed 1 — 0,739 проти 0,438</p><p style="font-size:24px;color:#6a7380">6</p></div>
+<aside>Фінальна оцінка — об'єм під усією поверхнею, а не одна точка. Тому ми міряли середній TPR на сітці вісім значень Lead time на шість бюджетів. На тисячі трьохстах розрядах, яких модель не бачила, це 0,69. Бейзлайн організаторів дає близько 0,44. Різниця статистично надійна: бутстреп по розрядах дає інтервал від 0,25 до 0,47. Слабке місце ми не ховаємо: за дві секунди до зриву ловимо мало, і далі пояснимо чому.</aside>
+</section>

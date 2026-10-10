@@ -1,0 +1,23 @@
+<section id="limits" data-transition="fade" style="background:#fcfcfb;color:#14181f;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Решту помилок пояснює жереб, а не модель</h2>
+<div style="display:flex;gap:32px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;padding:40px;border:1px solid #dcdfe3;border-radius:16px">
+<p style="font-size:64px;font-weight:700;line-height:1.05;color:#eb6834">98 %</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.2">Хибні тривоги — розряди, яким пощастило</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a5361">Вони справді йшли біля межі: накопичений ризик понад 0,3, медіана 1,22. Жереб їх оминув.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;padding:40px;border:1px solid #dcdfe3;border-radius:16px">
+<p style="font-size:64px;font-weight:700;line-height:1.05;color:#eb6834">35 %</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.2">Неон — це монета</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a5361">Після сильного напуску зривається кожен третій. Хто саме, прилади не показують: AUC 0,63.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;padding:40px;border:1px solid #dcdfe3;border-radius:16px">
+<p style="font-size:64px;font-weight:700;line-height:1.05;color:#eb6834">0,536</p>
+<h3 style="font-size:30px;font-weight:600;line-height:1.2">Стеля формули</h3>
+<p style="font-size:26px;line-height:1.4;color:#4a5361">З істинними входами замість приладів формула дає 0,536 проти наших 0,530. Запасу в оцінці стану немає.</p>
+</div>
+</div>
+<p style="font-size:30px;line-height:1.4;color:#4a5361">Тому на Lead time 2 с ловимо лише 6–42 %: за дві секунди жереб ще не кинуто.</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#6a7380">Стеля виміряна на окремому наборі з істинним станом плазми</p><p style="font-size:24px;color:#6a7380">9</p></div>
+<aside>Тепер про межі. Ми розібрали всі хибні тривоги при бюджеті п'ять відсотків. Дев'яносто вісім відсотків із них — розряди, які справді довго йшли біля межі й мали високий накопичений ризик. Вони просто вижили. Модель там не помилилася у фізиці, їй не пощастило з жеребом. Те саме з неоном: зривається кожен третій, а відрізнити, хто саме, за приладами майже неможливо. І контрольний дослід: якщо дати формулі справжній стан плазми замість зашумлених приладів, результат майже той самий. Тобто наша оцінка стану вже біля стелі, а далі починається випадковість.</aside>
+</section>
