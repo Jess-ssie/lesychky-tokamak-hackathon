@@ -59,6 +59,8 @@ class Model:
         self.kappa = None
         self.lm = 0.0           # згладжений сигнал сідлових котушок
         self.ip_prev = None     # попередня справна уставка струму
+        self.ip_meas = None     # згладжений виміряний струм (запасний шлях)
+        self.p_ohm_fb = None    # згладжена запасна оцінка омічної потужності
         self.t_flat = None      # момент виходу струму на плато
         self.neon_peak = 0.0    # найбільша команда клапана неону за розряд
         n = max(int(round(self.w["slope_window"] / self.dt)), 1)
@@ -98,7 +100,13 @@ class Model:
             ch = dict(zip(self.names, ch))
 
         # --- 1. стан плазми з приладів ---
-        ip = g(ch, "prog_ip_MA", g(ch, "mag_ip_MA"))      # уставка струму: без шуму
+        # струм: уставка (без шуму); якщо її канал мовчить від початку - згладжений вимір
+        ip_meas_raw = g(ch, "mag_ip_MA")
+        self.ip_meas = self.ema(self.ip_meas, ip_meas_raw, 0.05)
+        ip = g(ch, "prog_ip_MA", None)
+        ip_from_setpoint = ip is not None
+        if ip is None:
+            ip = self.ip_meas
         bt = g(ch, "prog_bt_T", g(ch, "mag_bt_T", 3.0))
         ne_set = g(ch, "prog_ne_1e20", None)
         # потужність нагріву: уставка, а якщо її канал мовчить від початку - вимір
@@ -129,12 +137,23 @@ class Model:
         self.beta_n = self.ema(self.beta_n, beta_t * A_MINOR * bt / ip_c, 0.1)
 
         # q95: Bt/Ip і витягнутість (котушка вертикального поля / струм)
-        self.kappa = self.ema(self.kappa, g(ch, "coil_pf_vert_kA") / ip_c, 0.05)
+        vert = g(ch, "coil_pf_vert_kA", None)
+        if vert is not None:
+            kappa_now = vert / ip_c
+        else:                   # запасний шлях: котушка форми (лінійна підгонка на навчальних розрядах)
+            kappa_now = w["kap_shape"] * g(ch, "coil_pf_shape_kA") + w["kap_ip"] * ip_c + w["kap_0"]
+        self.kappa = self.ema(self.kappa, kappa_now, 0.05)
         q95 = w["q_a"] * bt / ip_c * (1 + w["q_b"] * self.kappa * self.kappa)
 
         # частка випромінювання: сума болометрів / (нагрів + омічний)
-        self.vloop = self.ema(self.vloop, g(ch, "mag_vloop_V"), 0.1)
-        p_ohm = min(max(self.vloop * ip, 0.0), 5.0)
+        vloop = g(ch, "mag_vloop_V", None)
+        if vloop is not None:
+            self.vloop = self.ema(self.vloop, vloop, 0.1)
+            p_ohm = min(max(self.vloop * ip, 0.0), 5.0)
+        else:                   # запасний шлях: опір Спітцера, P_ohm ~ Ip^2 / Te^1.5 (Te з ECE)
+            te = max(g(ch, "ece_01"), 0.05)
+            self.p_ohm_fb = self.ema(self.p_ohm_fb, min(w["ohm_k"] * ip * ip / te ** 1.5, 5.0), 0.1)
+            p_ohm = self.p_ohm_fb
         p_in = p_aux + p_ohm
         p_rad = 0.0
         for name in BOLO:
@@ -150,6 +169,8 @@ class Model:
         # --- 3. скільки ще триватиме небезпечна фаза ---
         # програма має сталу форму: плато струму починається на 0.15 тривалості,
         # спад - на 0.80, жереб вимикається на 0.82 (струм нижче 90 % піку)
+        self.hist_ne.append(ne_set)
+        self.hist_ip.append(ip)
         raw_ip = ch.get("prog_ip_MA")
         ok = raw_ip is not None and raw_ip == raw_ip
         slope_now = 0.0
@@ -159,6 +180,13 @@ class Model:
                 self.t_flat = t - dt
         if ok:
             self.ip_prev = raw_ip
+        if not ip_from_setpoint and len(self.hist_ip) == self.hist_ip.maxlen:
+            # без уставки: нахил виміряного струму за вікно; плато - коли рампа (близько 1 МА/с) скінчилась
+            slope_now = (ip - self.hist_ip[0]) / w["slope_window"]
+            if self.t_flat is None and ip > 0.5 and slope_now < w["flat_slope"]:
+                self.t_flat = t - w["slope_window"]
+            if slope_now > -w["flat_slope"]:
+                slope_now = 0.0          # шум не вважаємо спадом
         dur = self.t_flat / 0.15 if self.t_flat else self.duration
         if dur:
             t_rem = max(w["gate_frac"] * dur - t, 0.0)
@@ -175,8 +203,6 @@ class Model:
         # (а) плазма напевно дійде до ПОТОЧНОЇ уставки густини - вага 1;
         # (б) уставки можуть і далі рости з тим самим нахилом - це лише
         #     припущення, тому вага fc_slope_weight < 1
-        self.hist_ne.append(ne_set)
-        self.hist_ip.append(ip)
         if live and len(self.hist_ne) == self.hist_ne.maxlen:
             span = w["slope_window"]
             h = w["fc_h"]

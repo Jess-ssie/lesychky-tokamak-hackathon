@@ -25,5 +25,10 @@
  "lm_tau": 0.02,
  "lm_thr": 0.013,
  "lm_w": 0.001,
- "fc_slope_weight": 0.35
+ "fc_slope_weight": 0.35,
+ "kap_shape": 0.2061,
+ "kap_ip": -0.079,
+ "kap_0": 0.007,
+ "ohm_k": 0.513,
+ "flat_slope": 0.1
 }
