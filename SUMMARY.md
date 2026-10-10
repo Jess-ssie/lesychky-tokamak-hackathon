@@ -106,7 +106,7 @@ O1–O6 взято з методички; офіційного списку гі
 | `research/` | скрипти дослідів (мережі, бустинг, гіпотези, графіки) |
 | `hypotheses/` | критерії (THEORY*) і результати (RESULTS*, POSTHOC) |
 | `figures/` | вісім графіків |
-| `presentation/` | десять слайдів (HTML) з нотатками доповідача |
+| `presentation/` | дванадцять слайдів (HTML) з нотатками доповідача |
 | `REPORT.md` | повний звіт |
 
 Перевірка здачі:
@@ -118,4 +118,4 @@ toksym score --submission submission --shots 200 --seed 1 --lead 0.3 --budget 0.
 
 ## 9. Презентація
 
-Порядок слайдів у `presentation/`: cover, task, model, result, point, surface, physics, ml, limits, close. Текст виступу — у тегу `<aside>` кожного файлу. Розраховано на 5–7 хвилин.
+Порядок слайдів у `presentation/`: cover, task, baseline, hypo, model, result, point, surface, physics, ml, limits, close. Текст виступу — у тегу `<aside>` кожного файлу. Розраховано на 7–10 хвилин.

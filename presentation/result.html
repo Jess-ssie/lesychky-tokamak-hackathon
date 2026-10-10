@@ -1,24 +1,12 @@
-<section id="result" data-transition="fade" style="background:#101820;color:#f3f2ee;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
-<h2 style="font-size:64px;font-weight:700;line-height:1.1">Результат у симуляторі: 44 зриви з 63</h2>
-<div style="display:flex;gap:32px;align-items:stretch">
-<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#17222e;padding:44px;border:1px solid #2b3a4a;border-radius:16px">
-<p style="font-size:112px;font-weight:700;line-height:1.05;color:#7fb2ee">70 %</p>
-<p style="font-size:30px;line-height:1.35;color:#c9d2dc">спіймано вчасно нашою моделлю</p>
+<section id="result" data-transition="fade" style="background:#101820;color:#f3f2ee;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;justify-content:space-between;gap:36px">
+<h2 style="font-size:64px;font-weight:700;line-height:1.1">Проти бейзлайна на тих самих розрядах: 72 % проти 29 %</h2>
+<div style="display:flex;flex-direction:column">
+<div style="display:flex;align-items:baseline;gap:24px;padding:0 0 16px;border-bottom:1px solid #2b3a4a"><p style="flex:1;font-size:24px;color:#8d99a8">200 розрядів, seed 1</p><p style="width:360px;font-size:24px;color:#8d99a8">Бейзлайн</p><p style="width:360px;font-size:24px;color:#8d99a8">Наша модель</p></div>
+<div style="display:flex;align-items:baseline;gap:24px;padding:22px 0;border-bottom:1px solid #2b3a4a"><p style="flex:1;font-size:30px;line-height:1.3;color:#c9d2dc">Спіймано за 0,3 с при бюджеті 5 %</p><p style="width:360px;font-size:72px;font-weight:700;line-height:1.05;color:#f0a37c">29 %</p><p style="width:360px;font-size:72px;font-weight:700;line-height:1.05;color:#7fb2ee">72 %</p></div>
+<div style="display:flex;align-items:baseline;gap:24px;padding:22px 0;border-bottom:1px solid #2b3a4a"><p style="flex:1;font-size:30px;line-height:1.3;color:#c9d2dc">Те саме у розрядах, з 58 зривів</p><p style="width:360px;font-size:56px;font-weight:700;line-height:1.05;color:#f0a37c">17</p><p style="width:360px;font-size:56px;font-weight:700;line-height:1.05;color:#7fb2ee">42</p></div>
+<div style="display:flex;align-items:baseline;gap:24px;padding:22px 0;border-bottom:1px solid #2b3a4a"><p style="flex:1;font-size:30px;line-height:1.3;color:#c9d2dc">Середній TPR по всій сітці</p><p style="width:360px;font-size:56px;font-weight:700;line-height:1.05;color:#f0a37c">0,44</p><p style="width:360px;font-size:56px;font-weight:700;line-height:1.05;color:#7fb2ee">0,74</p></div>
 </div>
-<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#17222e;padding:44px;border:1px solid #2b3a4a;border-radius:16px">
-<p style="font-size:112px;font-weight:700;line-height:1.05;color:#f0a37c">29 %</p>
-<p style="font-size:30px;line-height:1.35;color:#c9d2dc">бейзлайн організаторів на тих самих розрядах</p>
-</div>
-<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#17222e;padding:44px;border:1px solid #2b3a4a;border-radius:16px">
-<p style="font-size:112px;font-weight:700;line-height:1.05">0</p>
-<p style="font-size:30px;line-height:1.35;color:#c9d2dc">зривів без тривоги: решта 19 запізнилися</p>
-</div>
-<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#17222e;padding:44px;border:1px solid #2b3a4a;border-radius:16px">
-<p style="font-size:112px;font-weight:700;line-height:1.05">1,24 с</p>
-<p style="font-size:30px;line-height:1.35;color:#c9d2dc">медіанне випередження до гасіння</p>
-</div>
-</div>
-<p style="font-size:30px;line-height:1.4;color:#c9d2dc">Test run у toksym: 200 розрядів, Lead time 0,3 с, бюджет хибних тривог 5 % (6 зі 125 безпечних).</p>
-<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#8d99a8">Бейзлайн: 17 з 58 у прогоні на seed 1; наша модель там само — 42 з 58</p><p style="font-size:24px;color:#8d99a8">4</p></div>
-<aside>Офіційний Test run у симуляторі, двісті розрядів, однакові для всіх. Ми обрали Lead time 0,3 секунди і бюджет п'ять відсотків. Модель спіймала 44 зриви з 63, це 70 відсотків. Бейзлайн організаторів у тій самій точці дає 29 відсотків. Важливо: жоден зрив не лишився без тривоги. Решта 19 отримали тривогу, але пізніше ніж за 0,3 секунди. Медіанне випередження більше секунди. Чесне уточнення: порівняння з бейзлайном ми робили на стандартному наборі з командного рядка, там 42 проти 17 із 58.</aside>
+<p style="font-size:30px;line-height:1.4;color:#c9d2dc">Test run команди, інші 200 розрядів: 44 з 63 (70 %), 6 хибних тривог зі 125, жодного зриву без тривоги, медіанне випередження 1,24 с.</p>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between"><p style="font-size:24px;color:#8d99a8">На наборі команди різниця середнього TPR +0,35, інтервал 95 %: від 0,25 до 0,47</p><p style="font-size:24px;color:#8d99a8">6</p></div>
+<aside>Тепер результат проти бейзлайна, на тих самих двохстах розрядах. У точці 0,3 секунди і п'ять відсотків бейзлайн ловить 17 зривів із 58, ми 42. Це 29 проти 72 відсотків. По всій сітці Lead time і бюджетів середній TPR 0,44 проти 0,74. На іншому наборі, у Test run команди, наша модель дає 44 з 63, тобто 70 відсотків, і жоден зрив не лишився без тривоги: решта 19 отримали тривогу, але пізніше ніж за 0,3 секунди. Різниця з бейзлайном статистично надійна: бутстреп дає інтервал від 0,25 до 0,47.</aside>
 </section>
