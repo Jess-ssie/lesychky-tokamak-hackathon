@@ -1,2 +1,9 @@
 # lesychky-tokamak-hackathon
-ML model for predicting tokamak plasma behavior &amp; validating physical hypotheses | KPI &amp; Abitly Hackathon 2026 by team Lesychky
+
+Раннє попередження зриву плазми в симуляторі токамака JET. Хакатон «Код плазми» (ФМФ КПІ × Abitly), 9–11 жовтня 2026, команда Lesychky.
+
+- Модель: фізична формула ризику з навченими константами, тека `submission/`.
+- Офіційний Test run (seed 1, Lead time 0,3 с, бюджет 5 %): 42 з 58 зривів; бейзлайн організаторів — 17 з 58.
+- Перевірено 11 гіпотез із критеріями, записаними до запуску: `hypotheses/`.
+
+Повний опис усього зробленого — у [REPORT.md](REPORT.md).
